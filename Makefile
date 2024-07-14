@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/14 12:27:42 by ciglesia          #+#    #+#              #
-#    Updated: 2024/07/14 16:00:42 by ciglesia         ###   ########.fr        #
+#    Updated: 2024/07/14 16:07:22 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ define create_iso
     $(CP) $(BIN) $(DIRISO)boot/kernel.bin
     $(CP) $(GRUB_CFG) $(DIRISO)boot/grub/grub.cfg
     grub-mkrescue -o $(ISO) $(DIRISO)
+	@$(PRINTF) $(GREEN)"ISO created... %-33.33s\n"$(E0M) $(ISO)
 endef
 
 #****************** RULES *******************#
