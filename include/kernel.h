@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:14:13 by ciglesia          #+#    #+#             */
-/*   Updated: 2024/07/14 14:36:08 by ciglesia         ###   ########.fr       */
+/*   Updated: 2024/07/14 16:10:16 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ enum e_vga_color
 
 typedef struct s_terminal
 {
-    size_t row;
-    size_t column;
-    uint8_t color;
-    uint16_t* buffer;
+	size_t		row;
+	size_t		column;
+	uint8_t		color;
+	uint16_t	*buffer;
 }	t_terminal;
 
-void    terminal_putstr(const char* data, t_terminal *terminal);
+void	terminal_putstr(const char *data, t_terminal *terminal);
 void	terminal_putentryat(char c, t_terminal *terminal, size_t x, size_t y);
 
 #endif
