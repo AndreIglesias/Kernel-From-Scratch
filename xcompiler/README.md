@@ -17,8 +17,8 @@ docker build . -t xcompiler && docker run -it xcompiler
 ## Usage
 
 ```bash
-TARGET="i686-elf"
+TARGET="i386-elf"
 /opt/cross/bin/$TARGET-gcc --version
 # Or
-/opt/cross/bin/i686-elf-gcc --version
+/opt/cross/bin/i386-elf-gcc --version
 ```

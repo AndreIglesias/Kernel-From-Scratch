@@ -1,4 +1,5 @@
-
+kernel.bin
+kernel.iso
 ### Assembler ###
 *.exe
 *.o

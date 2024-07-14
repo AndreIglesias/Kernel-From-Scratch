@@ -1,15 +1,15 @@
 FROM ubuntu:focal
-# Setup of a cross-compiler for i686-elf
+# Setup of a cross-compiler for i386-elf
 # https://wiki.osdev.org/GCC_Cross-Compiler
 
 ENV PREFIX="/opt/cross"
-ENV TARGET="i686-elf"
+ENV TARGET="i386-elf"
 ENV PATH="$PREFIX/bin:$PATH"
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update && apt-get install -y wget \
-    build-essential bison flex libgmp3-dev \
+    build-essential bison flex libgmp3-dev grub2\
     libmpc-dev libmpfr-dev texinfo xorriso libisl-dev
 
 WORKDIR /opt

@@ -8,7 +8,7 @@ We are using the GNU assembler, which is part of our [cross-compiler toolchain](
 
 Build with the [cross-compiler](../xcompiler/), running inside the Docker container:
 ```bash
-i686-elf-as boot.s -o boot.o
+i386-elf-as boot.s -o boot.o
 ```
 Or using the `assemble.sh`:
 ```bash
