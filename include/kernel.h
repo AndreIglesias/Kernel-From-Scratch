@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:14:13 by ciglesia          #+#    #+#             */
-/*   Updated: 2024/07/14 16:10:16 by ciglesia         ###   ########.fr       */
+/*   Updated: 2024/07/16 01:18:29 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ typedef struct s_terminal
 
 void	terminal_putstr(const char *data, t_terminal *terminal);
 void	terminal_putentryat(char c, t_terminal *terminal, size_t x, size_t y);
+void    gdt_init(void);
 
 #endif

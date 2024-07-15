@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:08:17 by ciglesia          #+#    #+#             */
-/*   Updated: 2024/07/14 13:57:22 by ciglesia         ###   ########.fr       */
+/*   Updated: 2024/07/16 01:19:20 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	kernel_main(void)
 	t_terminal	terminal;
 
 	terminal_init(&terminal);
+	gdt_init();
 	terminal_putstr("42", &terminal);
 }
