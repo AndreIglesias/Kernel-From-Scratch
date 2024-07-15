@@ -92,8 +92,8 @@ The `kernel.c` file contains the kernel's main logic, including terminal initial
   ```
 
 - **Terminal Initialization**:
-  - Initializes the terminal, setting up the screen with the default color and clearing it.
-  
+  - This kernel uses the VGA text mode buffer (located at `0xB8000`) as the output device.
+
   ```c
   void terminal_init(t_terminal *terminal) {
       ...
@@ -101,6 +101,9 @@ The `kernel.c` file contains the kernel's main logic, including terminal initial
       ...
   }
   ```
+
+> [!NOTE]
+> VGA text mode (as well as the BIOS) is deprecated on newer machines, and UEFI only supports pixel buffers.  
 
 - **Kernel Main Function**:
   - The entry point of the kernel, which initializes the terminal and displays "42".

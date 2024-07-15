@@ -19,7 +19,7 @@ A kernel developed from scratch without relying on any existing software, APIs, 
 
 ## Project Overview
 
-This project demonstrates the development of a basic x86 kernel. It includes setting up the bootloader, initializing the terminal, and printing text to the screen. The kernel is built using a cross-compiler and runs on a virtual machine using QEMU.
+This project demonstrates the [development](https://wiki.osdev.org/Bare_Bones) of a basic x86 kernel. It includes setting up the bootloader, initializing the terminal, and printing text to the screen. The kernel is built using a cross-compiler and runs on KVM using QEMU.
 
 ## Setup
 
