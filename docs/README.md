@@ -63,6 +63,10 @@ The `boot.s` file is the initial assembly code that sets up the processor enviro
 ```assembly
 /* Declare constants for the multiboot header. */
 ...
+_start:
+...
+    call kernel_main        /* Enter high-level kernel */
+...
 ```
 
 ### Kernel Code (`kernel.c` and `terminal.c`)
@@ -98,6 +102,8 @@ The `linker.ld` script specifies how the various sections of the kernel should b
 
 ```ld
 /* Example linker script */
+ENTRY(_start)
+
 SECTIONS {
     . = 0x100000;
     .text : { *(.text) }
@@ -121,7 +127,7 @@ menuentry "kernel-from-scratch" {
 
 ### Requirements
 
-- An ix86-elf cross-compiler.
+- The ix86-elf cross-compiler inside the `Dockerfile` from the directory [`xcompiler`](../xcompiler/).
 
 ### Steps
 
