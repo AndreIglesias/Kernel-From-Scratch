@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:14:13 by ciglesia          #+#    #+#             */
-/*   Updated: 2024/07/16 01:18:29 by ciglesia         ###   ########.fr       */
+/*   Updated: 2024/07/16 01:39:34 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
+#include <stdarg.h>
 
 /* Hardware text mode color constants. */
 enum e_vga_color
@@ -57,8 +58,11 @@ typedef struct s_terminal
 	uint16_t	*buffer;
 }	t_terminal;
 
+void    gdt_init(void);
+
+void	terminal_putchar(char c, t_terminal *terminal);
 void	terminal_putstr(const char *data, t_terminal *terminal);
 void	terminal_putentryat(char c, t_terminal *terminal, size_t x, size_t y);
-void    gdt_init(void);
+void	printk(t_terminal *terminal, const char *s, ...);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/14 12:27:42 by ciglesia          #+#    #+#              #
-#    Updated: 2024/07/16 00:28:27 by ciglesia         ###   ########.fr        #
+#    Updated: 2024/07/16 01:40:16 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INCLUDE		=   -I $(INC)
 #****************** SRC *******************#
 
 DIRSRC      =   ./kernel/
-SRC         =   kernel.c terminal.c gdt.c
+SRC         =   kernel.c terminal.c gdt.c printk.c
 GDT			=	load_gdt.s
 
 DIRASM	  	=   ./boot/

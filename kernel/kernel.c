@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:08:17 by ciglesia          #+#    #+#             */
-/*   Updated: 2024/07/16 01:19:20 by ciglesia         ###   ########.fr       */
+/*   Updated: 2024/07/16 01:39:13 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,19 @@ void	terminal_init(t_terminal *terminal)
 	}
 }
 
-void	kernel_main(void)
+void kernel_main(void)
 {
-	t_terminal	terminal;
+    t_terminal terminal;
 
 	terminal_init(&terminal);
 	gdt_init();
-	terminal_putstr("42", &terminal);
+    printk(&terminal, "Hello, kernel World!\n%d\n\n", 42);
+    printk(&terminal, "%s\n", "$$\\   $$\\  $$$$$$\\");
+    printk(&terminal, "%s\n", "$$ |  $$ |$$  __$$\\");
+    printk(&terminal, "%s\n", "$$ |  $$ |\\__/  $$ |");
+    printk(&terminal, "%s\n", "$$$$$$$$ | $$$$$$  |");
+    printk(&terminal, "%s\n", "\\_____$$ |$$  ____/");
+    printk(&terminal, "%s\n", "      $$ |$$ |");
+    printk(&terminal, "%s\n", "      $$ |$$$$$$$$\\");
+    printk(&terminal, "%s\n", "      \\__|\\________|");
 }
