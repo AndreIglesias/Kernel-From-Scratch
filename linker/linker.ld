@@ -2,6 +2,11 @@ ENTRY(_start)
 
 SECTIONS
 {
+    /* GDT at address 0x00000800 */
+    .gdt 0x00000800 :
+    {
+        KEEP(*(.gdt))
+    }
 	. = 1M;
 	.text BLOCK(4K) : ALIGN(4K)
 	{
