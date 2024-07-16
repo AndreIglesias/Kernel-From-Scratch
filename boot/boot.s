@@ -18,6 +18,8 @@
 /* Stack setup */
 .section .bss
 .align 16
+.global stack_bottom
+.global stack_top
 stack_bottom:
 .skip 16384    /* 16 KiB stack space */
 stack_top:

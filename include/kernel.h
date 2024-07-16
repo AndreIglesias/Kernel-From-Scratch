@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:14:13 by ciglesia          #+#    #+#             */
-/*   Updated: 2024/07/16 01:39:34 by ciglesia         ###   ########.fr       */
+/*   Updated: 2024/07/16 10:50:50 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ typedef struct s_terminal
 	uint8_t		color;
 	uint16_t	*buffer;
 }	t_terminal;
+
+// Symbols from boot.s
+extern uint32_t stack_bottom;
+extern uint32_t stack_top;
 
 void    gdt_init(void);
 
