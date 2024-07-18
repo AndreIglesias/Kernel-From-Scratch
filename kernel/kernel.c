@@ -6,7 +6,7 @@
 /*   By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:08:17 by ciglesia          #+#    #+#             */
-/*   Updated: 2024/07/16 01:15:56 by ciglesia         ###   ########.fr       */
+/*   Updated: 2024/07/16 10:51:12 by ciglesia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,50 @@ void	terminal_init(t_terminal *terminal)
 	}
 }
 
+// Assuming a 3 GHz processor
+void sleep_half_second() {
+    const uint64_t cycles_per_half_second = 150000000;
+    uint64_t start, end;
+
+    asm volatile ("rdtsc" : "=A" (start));
+    do {
+        asm volatile ("rdtsc" : "=A" (end));
+    } while ((end - start) < cycles_per_half_second);
+}
+
+void print_stack(t_terminal *terminal)
+{
+    uint32_t* stack_ptr;
+    uint32_t* stack_end;
+
+    stack_ptr = &stack_top;
+    stack_end = &stack_bottom;
+    int i = 0;
+    while (stack_ptr >= stack_end)
+    {
+        printk(terminal, "%d %x: %x       \n", i++, (uint32_t)stack_ptr, *stack_ptr);
+        stack_ptr--;
+        sleep_half_second();
+    }
+    // Stack is from, to, size of stack
+    printk(terminal, "Stack: top(%x), bottom(%x), size(%d)\n", 
+        &stack_top, &stack_bottom, &stack_top - &stack_bottom);
+}
+
 void kernel_main(void)
 {
     t_terminal terminal;
 
-    terminal_init(&terminal);
+	terminal_init(&terminal);
+	gdt_init();
     printk(&terminal, "Hello, kernel World!\n%d\n\n", 42);
-    printk(&terminal, "%s\n", "$$\\   $$\\  $$$$$$\\");
-    printk(&terminal, "%s\n", "$$ |  $$ |$$  __$$\\");
-    printk(&terminal, "%s\n", "$$ |  $$ |\\__/  $$ |");
-    printk(&terminal, "%s\n", "$$$$$$$$ | $$$$$$  |");
-    printk(&terminal, "%s\n", "\\_____$$ |$$  ____/");
-    printk(&terminal, "%s\n", "      $$ |$$ |");
-    printk(&terminal, "%s\n", "      $$ |$$$$$$$$\\");
-    printk(&terminal, "%s\n", "      \\__|\\________|");
+    printk(&terminal, "                              %s\n", "$$\\   $$\\  $$$$$$\\");
+    printk(&terminal, "                              %s\n", "$$ |  $$ |$$  __$$\\");
+    printk(&terminal, "                              %s\n", "$$ |  $$ |\\__/  $$ |");
+    printk(&terminal, "                              %s\n", "$$$$$$$$ | $$$$$$  |");
+    printk(&terminal, "                              %s\n", "\\_____$$ |$$  ____/");
+    printk(&terminal, "                              %s\n", "      $$ |$$ |");
+    printk(&terminal, "                              %s\n", "      $$ |$$$$$$$$\\");
+    printk(&terminal, "                              %s\n", "      \\__|\\________|");
+    print_stack(&terminal);
 }

@@ -6,7 +6,7 @@
 #    By: ciglesia <ciglesia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/14 12:27:42 by ciglesia          #+#    #+#              #
-#    Updated: 2024/07/16 01:01:36 by ciglesia         ###   ########.fr        #
+#    Updated: 2024/07/16 01:40:16 by ciglesia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ INCLUDE		=   -I $(INC)
 #****************** SRC *******************#
 
 DIRSRC      =   ./kernel/
-SRC         =   kernel.c terminal.c printk.c
+SRC         =   kernel.c terminal.c gdt.c printk.c
+GDT			=	load_gdt.s
 
 DIRASM	  	=   ./boot/
 ASM			=	boot.s
@@ -42,6 +43,7 @@ OAUX        =   $(SRC:%=$(DIROBJ)%)
 DEPS        =   $(OBJS:.o=.d)
 OBJS        =   $(OAUX:.c=.o)
 OASM		=	$(DIROBJ)$(ASM:.s=.o)
+OGDT		=	$(DIROBJ)$(GDT:.s=.o)
 
 .ONESHELL:
 $(shell mkdir -p $(DIROBJ))
@@ -101,7 +103,8 @@ endef
 $(BIN)     :   $(OBJS)
 				@$(PRINTF) $(GREEN)"\nCompiling kernel... %-33.33s\n"$(E0M) $@
 				$(AC) $(DIRASM)$(ASM) -o $(OASM)
-				$(LC) -T $(LNK) -o $(BIN) $(OASM) $(OBJS) $(LFLAGS)
+				$(AC) $(DIRSRC)$(GDT) -o $(OGDT)
+				$(LC) -T $(LNK) -o $(BIN) $(OASM) $(OGDT) $(OBJS) $(LFLAGS)
 				$(call create_iso)
 
 all         :   $(BIN)
